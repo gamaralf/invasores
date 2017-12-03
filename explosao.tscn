@@ -1,0 +1,40 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://explosao_sonica/sonicExplosion00.png" type="Texture" id=1]
+[ext_resource path="res://explosao_sonica/sonicExplosion01.png" type="Texture" id=2]
+[ext_resource path="res://explosao_sonica/sonicExplosion02.png" type="Texture" id=3]
+[ext_resource path="res://explosao_sonica/sonicExplosion03.png" type="Texture" id=4]
+[ext_resource path="res://explosao_sonica/sonicExplosion04.png" type="Texture" id=5]
+[ext_resource path="res://explosao_sonica/sonicExplosion05.png" type="Texture" id=6]
+[ext_resource path="res://explosao_sonica/sonicExplosion06.png" type="Texture" id=7]
+[ext_resource path="res://explosao_sonica/sonicExplosion07.png" type="Texture" id=8]
+[ext_resource path="res://explosao_sonica/sonicExplosion08.png" type="Texture" id=9]
+[ext_resource path="res://explosao.gd" type="Script" id=10]
+[ext_resource path="res://explosao_sonica/enemy_explode.wav" type="AudioStream" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "sonica",
+"speed": 5.0
+} ]
+
+[node name="Explosao" type="AnimatedSprite"]
+
+frames = SubResource( 1 )
+animation = "sonica"
+script = ExtResource( 10 )
+
+[node name="SomExplosao" type="AudioStreamPlayer" parent="."]
+
+stream = ExtResource( 11 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[connection signal="animation_finished" from="." to="." method="_on_explosao_animation_finished"]
+
+

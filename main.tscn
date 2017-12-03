@@ -1,0 +1,161 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://explosao.tscn" type="PackedScene" id=2]
+[ext_resource path="res://starfield.png" type="Texture" id=3]
+[ext_resource path="res://jogador/nave.tscn" type="PackedScene" id=4]
+[ext_resource path="res://jogador/projetil_jogador.tscn" type="PackedScene" id=5]
+[ext_resource path="res://inimigo/inimigo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://hud.gd" type="Script" id=7]
+[ext_resource path="res://fonts/KenVector Future.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 316.167 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 314.343 )
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 27
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 60
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 8 )
+
+[node name="Main" type="Node"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+Explosao = ExtResource( 2 )
+
+[node name="Fundo" type="Sprite" parent="."]
+
+position = Vector2( 512.229, 371.654 )
+scale = Vector2( 1.28887, 1.28887 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Nave" parent="." instance=ExtResource( 4 )]
+
+position = Vector2( 548.747, 547.439 )
+Projetil = ExtResource( 5 )
+
+[node name="limite_esquerdo" type="StaticBody2D" parent="." groups=[
+"limites",
+]]
+
+editor/display_folded = true
+position = Vector2( -9.67957, 295.216 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="limite_esquerdo"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="limite_direito" type="StaticBody2D" parent="." groups=[
+"limites",
+]]
+
+editor/display_folded = true
+position = Vector2( 1034.75, 291.24 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="limite_direito"]
+
+shape = SubResource( 2 )
+
+[node name="Inimigo" parent="." instance=ExtResource( 6 )]
+
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+script = ExtResource( 7 )
+
+[node name="Pontuacao" type="Label" parent="Hud"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 71.0
+margin_top = 565.0
+margin_right = 111.0
+margin_bottom = 579.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "1000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Mensagem" type="Label" parent="Hud"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "FIM DE JOGO"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="TimerMensagem" type="Timer" parent="Hud"]
+
+process_mode = 1
+wait_time = 3.3
+one_shot = true
+autostart = false
+
+
