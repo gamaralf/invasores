@@ -9,7 +9,7 @@
 [ext_resource path="res://explosao_sonica/sonicExplosion06.png" type="Texture" id=7]
 [ext_resource path="res://explosao_sonica/sonicExplosion07.png" type="Texture" id=8]
 [ext_resource path="res://explosao_sonica/sonicExplosion08.png" type="Texture" id=9]
-[ext_resource path="res://explosao.gd" type="Script" id=10]
+[ext_resource path="res://explosao/explosao.gd" type="Script" id=10]
 [ext_resource path="res://explosao_sonica/enemy_explode.wav" type="AudioStream" id=11]
 
 [sub_resource type="SpriteFrames" id=1]

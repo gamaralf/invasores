@@ -1,4 +1,4 @@
-extends "res://projetil.gd"
+extends "res://projetil/projetil.gd"
 
 func _ready():
 	connect("body_entered", self, "_on_projetil_body_entered")

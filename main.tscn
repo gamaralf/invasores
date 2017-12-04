@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
-[ext_resource path="res://explosao.tscn" type="PackedScene" id=2]
+[ext_resource path="res://explosao/explosao.tscn" type="PackedScene" id=2]
 [ext_resource path="res://starfield.png" type="Texture" id=3]
 [ext_resource path="res://jogador/nave.tscn" type="PackedScene" id=4]
 [ext_resource path="res://jogador/projetil_jogador.tscn" type="PackedScene" id=5]
